@@ -9,9 +9,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  bool e = false;
-
   @override
+  bool e = false;
   void initState() {
     super.initState();
     e = false;
@@ -20,15 +19,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Image(
-              image: AssetImage('mt.png'),
-              height: 60.0,
-              width: 60.0,
-            ),
-            Text("MT Enterprises")
-          ],
+        title: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Image(
+                image: AssetImage('mt.png'),
+                height: 40.0,
+                width: 40.0,
+              ),
+              Text(
+                "MT Enterprises",
+                style: TextStyle(fontSize: 15.0),
+              )
+            ],
+          ),
         ),
         actions: [
           Padding(
@@ -37,6 +42,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Icon(
                   Icons.phone,
+                  size: 15.0,
                   color: Colors.black,
                 ),
                 Padding(padding: EdgeInsets.only(left: 5.0)),
@@ -64,12 +70,12 @@ class _HomePageState extends State<HomePage> {
                     child: Image(
                         fit: BoxFit.fill,
                         image: AssetImage("handicraft.png"),
-                        height: MediaQuery.of(context).size.height * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.6,
                         width: MediaQuery.of(context).size.width),
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Padding(padding: EdgeInsets.only(top: 30.0)),
               MouseRegion(
                 onHover: (event) {
                   setState(() {
@@ -89,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.of(context).pushNamed("/catalog");
                     }),
               ),
+              Padding(padding: EdgeInsets.only(top: 30.0)),
               Align(
                 alignment: Alignment.centerLeft,
                 child: RichText(
@@ -101,19 +108,29 @@ class _HomePageState extends State<HomePage> {
                       )),
                 ),
               ),
+
               Row(
                 children: [
+                  Padding(padding: EdgeInsets.only(right: 30.0)),
                   Expanded(
-                    child: RichText(
-                        text: TextSpan(
-                            text:
-                                "MT Enterprises is a widely known and reliable representative and distributor of various products in the Sensory Analysis Field such as Sensory Instruments (electronic nose, electronic tongue and electronic eye FIZZ Software for conducting automated Sensory and Consumer Tests, ARCS Software which provides complete Panel Managment Solutions and Olfactory Port for GC.We also have products for measurment of Nuisance(Odour Pollution and Air Pollution) in Indoor and Outdoor Environments. With offered gamut of products, we are providing one stop destination to meet each client's demand in the most effective manner MT Enterprises is head quartered in New Delhi, the capital of India and has associates at different cities to cover the entire India. Mr. Sachin Tanwar, our great mentor, has been driving the organization with his business acumen and skills. He favors sustainable relationship and ethical business policies to provide rewarding experience to the clients. He has experience of more than 25 years in the field of Analytical Instrumentation and Sensory Analysis and has worked in world class companies like Shimadzu, Hitachi, Ametek, Alpha MOS etc.We count big organisations like CFTRI, CSIO, IIT Kharagpur, CDAC, RDSO, Dr. Reddy’s Lab,Glenmark, ITC, CEERI, AIIMS,IOCL,CPCB,TATA Global Beverages, Nestle, Marico,Givaudan and others as our customers.")),
+                    flex: 4,
+                    child: Text(
+                      "MT Enterprises is a widely known and reliable representative and distributor of various products in the Sensory Analysis Field such as Sensory Instruments (electronic nose, electronic tongue and electronic eye FIZZ Software for conducting automated Sensory and Consumer Tests, ARCS Software which provides complete Panel Managment Solutions and Olfactory Port for GC.We also have products for measurment of Nuisance(Odour Pollution and Air Pollution) in Indoor and Outdoor Environments. With offered gamut of products, we are providing one stop destination to meet each client's demand in the most effective manner MT Enterprises is head quartered in New Delhi, the capital of India and has associates at different cities to cover the entire India. Mr. Sachin Tanwar, our great mentor, has been driving the organization with his business acumen and skills. He favors sustainable relationship and ethical business policies to provide rewarding experience to the clients. He has experience of more than 25 years in the field of Analytical Instrumentation and Sensory Analysis and has worked in world class companies like Shimadzu, Hitachi, Ametek, Alpha MOS etc.We count big organisations like CFTRI, CSIO, IIT Kharagpur, CDAC, RDSO, Dr. Reddy’s Lab,Glenmark, ITC, CEERI, AIIMS,IOCL,CPCB,TATA Global Beverages, Nestle, Marico,Givaudan and others as our customers.",
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                    ),
                   ),
-                  Expanded(
-                    child: Image(image: AssetImage("handicraft.png")),
-                  )
+                  Padding(padding: EdgeInsets.only(right: 30.0)),
                 ],
               ),
+              // Expanded(
+              //   flex: 3,
+              //   child: Image(
+              //     fit: BoxFit.fill,
+              //     image: AssetImage("handicraft.png"),
+              //     height: MediaQuery.of(context).size.height * .4,
+              //     width: MediaQuery.of(context).size.width * .6,
+              //   ),
+              // ),
               Padding(padding: EdgeInsets.only(top: 20.0)),
               appfooter()
             ],
@@ -123,3 +140,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+                                  // "MT Enterprises is a widely known and reliable representative and distributor of various products in the Sensory Analysis Field such as Sensory Instruments (electronic nose, electronic tongue and electronic eye FIZZ Software for conducting automated Sensory and Consumer Tests, ARCS Software which provides complete Panel Managment Solutions and Olfactory Port for GC.We also have products for measurment of Nuisance(Odour Pollution and Air Pollution) in Indoor and Outdoor Environments. With offered gamut of products, we are providing one stop destination to meet each client's demand in the most effective manner MT Enterprises is head quartered in New Delhi, the capital of India and has associates at different cities to cover the entire India. Mr. Sachin Tanwar, our great mentor, has been driving the organization with his business acumen and skills. He favors sustainable relationship and ethical business policies to provide rewarding experience to the clients. He has experience of more than 25 years in the field of Analytical Instrumentation and Sensory Analysis and has worked in world class companies like Shimadzu, Hitachi, Ametek, Alpha MOS etc.We count big organisations like CFTRI, CSIO, IIT Kharagpur, CDAC, RDSO, Dr. Reddy’s Lab,Glenmark, ITC, CEERI, AIIMS,IOCL,CPCB,TATA Global Beverages, Nestle, Marico,Givaudan and others as our customers.")),

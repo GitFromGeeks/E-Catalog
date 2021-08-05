@@ -71,27 +71,52 @@ Widget appfooter() {
                   ],
                 ),
               ),
-              Text(
-                'Contact. +91 989xxxxxxx, 989xxxxxxx , 0591,458732',
-                style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 12.0,
-                    color: Color(0xFF162A49)),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.phone),
+                  Text(
+                    '+91 989xxxxxxx, 989xxxxxxx , 0591,458732',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.0,
+                        color: Color(0xFF162A49)),
+                  ),
+                ],
               ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.mail,
+                    color: Colors.black,
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 5.0)),
+                  Text(
+                    "anasmtenterprises@gmail.com",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
                 'Ad. Jabbar Colony near xyz place sambhal road moradabad pin 244001',
                 style: TextStyle(
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.bold,
                     fontSize: 12.0,
                     color: Color(0xFF162A49)),
               ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
                 'Copyright ©2021, All Rights Reserved.',
                 style: TextStyle(
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.bold,
                     fontSize: 12.0,
                     color: Color(0xFF162A49)),
               ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
                 'Powered by MT Enterprises',
                 style: TextStyle(
