@@ -25,13 +25,14 @@ class _HomePageState extends State<HomePage> {
             children: [
               Image(
                 image: AssetImage('mt.png'),
-                height: 40.0,
-                width: 40.0,
+                height: 80.0,
+                width: 80.0,
               ),
-              Text(
-                "MT Enterprises",
-                style: TextStyle(fontSize: 15.0),
-              )
+              // Padding(padding: EdgeInsets.only(right: 5.0)),
+              // Text(
+              //   "MT Enterprises",
+              //   style: TextStyle(fontSize: 15.0),
+              // )
             ],
           ),
         ),
@@ -40,17 +41,29 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Icon(
-                  Icons.phone,
-                  size: 15.0,
-                  color: Colors.black,
-                ),
+                MediaQuery.of(context).size.width >= 500.0
+                    ? Row(
+                        children: [
+                          Icon(Icons.mail, size: 15.0, color: Colors.white70),
+                          Padding(padding: EdgeInsets.only(left: 5.0)),
+                          Text(
+                            "anas@mtenterprises@gmail.com",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: 5.0)),
+                        ],
+                      )
+                    : Text(" "),
+                Icon(Icons.phone, size: 15.0, color: Colors.white54),
                 Padding(padding: EdgeInsets.only(left: 5.0)),
                 Text(
-                  "+91 8586874112",
+                  "+91 xxxxxxxxxx",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.white70,
                   ),
                 ),
               ],
@@ -70,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                     child: Image(
                         fit: BoxFit.fill,
                         image: AssetImage("handicraft.png"),
-                        height: MediaQuery.of(context).size.height * 0.6,
+                        height: MediaQuery.of(context).size.height * 0.5,
                         width: MediaQuery.of(context).size.width),
                   ),
                 ],
@@ -100,10 +113,10 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: RichText(
                   text: TextSpan(
-                      text: '    Who we are',
+                      text: '  Who we are',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 50.0,
+                        color: Colors.blueGrey,
+                        fontSize: 40.0,
                         fontWeight: FontWeight.bold,
                       )),
                 ),
@@ -132,7 +145,7 @@ class _HomePageState extends State<HomePage> {
               //   ),
               // ),
               Padding(padding: EdgeInsets.only(top: 20.0)),
-              appfooter()
+              appfooter(context)
             ],
           ),
         ),

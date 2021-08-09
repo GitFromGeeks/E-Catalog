@@ -1,3 +1,5 @@
+import 'package:ecatalog/screens/auth.dart';
+import 'package:ecatalog/screens/dashboard.dart';
 import 'package:ecatalog/screens/home.dart';
 import 'package:flutter/material.dart';
 import './screens/catalog.dart';
@@ -10,8 +12,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MT Enterprises',
       home: HomePage(),
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      routes: {'/catalog': (context) => Catalog()},
+      routes: {
+        '/catalog': (context) => Catalog(),
+        '/auth': (context) => AuthPage(),
+        '/dashboard': (context) => Dashboard(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }

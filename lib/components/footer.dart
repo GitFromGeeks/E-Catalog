@@ -1,8 +1,9 @@
+import 'package:ecatalog/screens/auth.dart';
 import 'package:flutter/material.dart';
 
-Widget appfooter() {
+Widget appfooter(context) {
   return (BottomAppBar(
-    color: Colors.blueAccent,
+    color: Colors.black87,
     child: Container(
       child: Padding(
         padding: EdgeInsets.all(5.0),
@@ -29,7 +30,7 @@ Widget appfooter() {
                                 Icons.facebook,
                                 size: 20.0,
                               ),
-                              color: Color(0xFF162A49),
+                              color: Colors.white,
                               onPressed: () {},
                             ),
                           ),
@@ -60,11 +61,16 @@ Widget appfooter() {
                             ),
                             child: IconButton(
                               icon: Icon(
-                                Icons.dashboard,
+                                Icons.admin_panel_settings,
                                 size: 20.0,
                               ),
-                              color: Color(0xFF162A49),
-                              onPressed: () {},
+                              color: Colors.white,
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AuthPage()));
+                              },
                             ),
                           ),
                         )),
@@ -81,7 +87,7 @@ Widget appfooter() {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0,
-                        color: Color(0xFF162A49)),
+                        color: Colors.white60),
                   ),
                 ],
               ),
@@ -91,22 +97,30 @@ Widget appfooter() {
                 children: [
                   Icon(
                     Icons.mail,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   Padding(padding: EdgeInsets.only(left: 5.0)),
                   Text(
                     "anasmtenterprises@gmail.com",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white60),
                   ),
                 ],
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
-                'Ad. Jabbar Colony near xyz place sambhal road moradabad pin 244001',
+                '           Add. Jabbar Colony near xyz place sambhal',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,
-                    color: Color(0xFF162A49)),
+                    color: Colors.white60),
+              ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Text(
+                '           road karula Moradabad 244001',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12.0,
+                    color: Colors.white60),
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
@@ -114,15 +128,15 @@ Widget appfooter() {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,
-                    color: Color(0xFF162A49)),
+                    color: Colors.white60),
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
                 'Powered by MT Enterprises',
                 style: TextStyle(
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.bold,
                     fontSize: 12.0,
-                    color: Color(0xFF162A49)),
+                    color: Colors.white60),
               ),
             ]),
       ),
