@@ -1,9 +1,11 @@
 import 'package:ecatalog/screens/auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 Widget appfooter(context) {
   return (BottomAppBar(
-    color: Colors.black87,
+    color: Colors.blueAccent,
     child: Container(
       child: Padding(
         padding: EdgeInsets.all(5.0),
@@ -30,7 +32,7 @@ Widget appfooter(context) {
                                 Icons.facebook,
                                 size: 20.0,
                               ),
-                              color: Colors.white,
+                              color: Colors.black,
                               onPressed: () {},
                             ),
                           ),
@@ -46,8 +48,11 @@ Widget appfooter(context) {
                                     25.0), // half of height and width of Image
                               ),
                               child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.camera_alt_rounded))),
+                                  onPressed: () {
+                                    MapsLauncher.launchCoordinates(28.7820617,
+                                        78.7644163, 'MT Enterprises');
+                                  },
+                                  icon: Icon(Icons.location_city))),
                         )),
                     Container(
                         height: 45.0,
@@ -64,7 +69,7 @@ Widget appfooter(context) {
                                 Icons.admin_panel_settings,
                                 size: 20.0,
                               ),
-                              color: Colors.white,
+                              color: Colors.black,
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -81,13 +86,16 @@ Widget appfooter(context) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.phone),
+                  Icon(
+                    Icons.phone,
+                    color: Colors.black,
+                  ),
                   Text(
-                    '+91 989xxxxxxx, 989xxxxxxx , 0591,458732',
+                    '+91 9897704730, 9897704730',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0,
-                        color: Colors.white60),
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -97,30 +105,37 @@ Widget appfooter(context) {
                 children: [
                   Icon(
                     Icons.mail,
-                    color: Colors.white,
+                    color: Colors.black,
+                    size: 15.0,
                   ),
-                  Padding(padding: EdgeInsets.only(left: 5.0)),
-                  Text(
-                    "anasmtenterprises@gmail.com",
-                    style: TextStyle(color: Colors.white60),
-                  ),
+                  Padding(padding: EdgeInsets.only(left: 1.0)),
+                  Text("anas@mtenterprises.in, farhan@mtenterprises.in",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold)),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
-                '           Add. Jabbar Colony near xyz place sambhal',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                    color: Colors.white60),
+                "info@mtenterprises.in",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
-                '           road karula Moradabad 244001',
+                '           285,352 Dhoom Gher Village, Chandusi Road',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,
-                    color: Colors.white60),
+                    color: Colors.black),
+              ),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Text(
+                '           Moradabad 244001',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12.0,
+                    color: Colors.black),
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
@@ -128,15 +143,7 @@ Widget appfooter(context) {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,
-                    color: Colors.white60),
-              ),
-              Padding(padding: EdgeInsets.only(top: 10.0)),
-              Text(
-                'Powered by MT Enterprises',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                    color: Colors.white60),
+                    color: Colors.black),
               ),
             ]),
       ),

@@ -13,8 +13,8 @@ class AuthPage extends StatelessWidget {
               children: [
                 Image(
                   image: AssetImage('mt.png'),
-                  height: 80.0,
-                  width: 80.0,
+                  height: 60.0,
+                  width: 60.0,
                 ),
                 // Padding(padding: EdgeInsets.only(right: 5.0)),
                 // Text(
@@ -32,26 +32,26 @@ class AuthPage extends StatelessWidget {
                   MediaQuery.of(context).size.width >= 500.0
                       ? Row(
                           children: [
-                            Icon(Icons.mail, size: 15.0, color: Colors.white70),
+                            Icon(Icons.mail, size: 15.0, color: Colors.black),
                             Padding(padding: EdgeInsets.only(left: 5.0)),
                             Text(
-                              "anas@mtenterprises@gmail.com",
+                              "info@mtenterprises@gmail.com",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white70,
+                                color: Colors.black,
                               ),
                             ),
                             Padding(padding: EdgeInsets.only(left: 5.0)),
                           ],
                         )
                       : Text(" "),
-                  Icon(Icons.phone, size: 15.0, color: Colors.white54),
+                  Icon(Icons.phone, size: 15.0, color: Colors.black),
                   Padding(padding: EdgeInsets.only(left: 5.0)),
                   Text(
-                    "+91 xxxxxxxxxx",
+                    "+91 9897704730",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white70,
+                      color: Colors.black,
                     ),
                   ),
                 ],

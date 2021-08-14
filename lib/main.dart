@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MT Enterprises',
       home: HomePage(),
-      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       routes: {
         '/catalog': (context) => Catalog(),

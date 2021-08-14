@@ -1,4 +1,4 @@
-import 'package:ecatalog/components/footer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Catalog extends StatefulWidget {
@@ -17,8 +17,8 @@ class _CatalogState extends State<Catalog> {
             children: [
               Image(
                 image: AssetImage('mt.png'),
-                height: 80.0,
-                width: 80.0,
+                height: 60.0,
+                width: 60.0,
               ),
               // Padding(padding: EdgeInsets.only(right: 5.0)),
               // Text(
@@ -36,26 +36,26 @@ class _CatalogState extends State<Catalog> {
                 MediaQuery.of(context).size.width >= 500.0
                     ? Row(
                         children: [
-                          Icon(Icons.mail, size: 15.0, color: Colors.white70),
+                          Icon(Icons.mail, size: 15.0, color: Colors.black),
                           Padding(padding: EdgeInsets.only(left: 5.0)),
                           Text(
-                            "anas@mtenterprises@gmail.com",
+                            "info@mtenterprises@gmail.com",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.white70,
+                              color: Colors.black,
                             ),
                           ),
                           Padding(padding: EdgeInsets.only(left: 5.0)),
                         ],
                       )
                     : Text(" "),
-                Icon(Icons.phone, size: 15.0, color: Colors.white54),
+                Icon(Icons.phone, size: 15.0, color: Colors.black),
                 Padding(padding: EdgeInsets.only(left: 5.0)),
                 Text(
-                  "+91 xxxxxxxxxx",
+                  "+91 9897704730",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.white70,
+                    color: Colors.black,
                   ),
                 ),
               ],
@@ -65,13 +65,14 @@ class _CatalogState extends State<Catalog> {
       ),
       body: Column(
         children: [
-          TextField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(15.0),
-              hintText: 'Search here...',
-              icon: Icon(Icons.search),
-            ),
-            onChanged: (string) {},
+          Row(
+            children: [
+              TextButton(onPressed: () {}, child: Text("Stools")),
+              TextButton(onPressed: () {}, child: Text("Lamps")),
+              TextButton(onPressed: () {}, child: Text("Candle")),
+              TextButton(onPressed: () {}, child: Text("Frames")),
+              TextButton(onPressed: () {}, child: Text("Table")),
+            ],
           ),
           Expanded(
             child: Container(
@@ -79,6 +80,7 @@ class _CatalogState extends State<Catalog> {
                 itemCount: 6,
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0)),
                     child: Column(
@@ -90,15 +92,17 @@ class _CatalogState extends State<Catalog> {
                             width: MediaQuery.of(context).size.width,
                             image: AssetImage("h${index + 1}.jpg")),
                         ListTile(
-                          tileColor: Colors.white10,
+                          tileColor: Colors.blueGrey,
                           title: Text(
-                            "Product Name",
+                            "    Product Name",
                             style: TextStyle(
-                                fontSize: 25.0, fontWeight: FontWeight.bold),
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
                           ),
                           // trailing: ,
-                          subtitle: Text("Rate Rs.xxxxx"),
-                        )
+                        ),
+
                         // Image(image: AssetImage("h${index + 1}.jpg")),
                         // Text(
                         //   "Product Name",

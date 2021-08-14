@@ -41,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
                             Icon(Icons.mail, size: 15.0, color: Colors.white70),
                             Padding(padding: EdgeInsets.only(left: 5.0)),
                             Text(
-                              "anas@mtenterprises@gmail.com",
+                              "info@mtenterprises@gmail.com",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white70,
@@ -54,7 +54,7 @@ class _DashboardState extends State<Dashboard> {
                   Icon(Icons.phone, size: 15.0, color: Colors.white54),
                   Padding(padding: EdgeInsets.only(left: 5.0)),
                   Text(
-                    "+91 xxxxxxxxxx",
+                    "+91 9897704730",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white70,
@@ -88,6 +88,7 @@ class _DashboardState extends State<Dashboard> {
                   itemCount: 6,
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       child: Column(
@@ -100,14 +101,18 @@ class _DashboardState extends State<Dashboard> {
                             title: Text(
                               "Product Name",
                               style: TextStyle(
-                                  fontSize: 25.0, fontWeight: FontWeight.bold),
+                                  color: Colors.black,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold),
                             ),
                             trailing: FittedBox(
                               fit: BoxFit.fill,
                               child: Row(
                                 children: [
                                   IconButton(
-                                      icon: Icon(Icons.edit), onPressed: () {}),
+                                      color: Colors.black,
+                                      icon: Icon(Icons.edit),
+                                      onPressed: () {}),
                                   IconButton(
                                       icon: Icon(
                                         Icons.delete,
@@ -117,7 +122,6 @@ class _DashboardState extends State<Dashboard> {
                                 ],
                               ),
                             ),
-                            subtitle: Text("Rate Rs.xxxxx"),
                           )
                           // Image(image: AssetImage("h${index + 1}.jpg")),
                           // Text(
@@ -138,11 +142,11 @@ class _DashboardState extends State<Dashboard> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           hoverColor: Colors.amber,
           child: Icon(
             Icons.add,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
