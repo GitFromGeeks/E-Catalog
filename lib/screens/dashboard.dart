@@ -123,14 +123,6 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ),
                           )
-                          // Image(image: AssetImage("h${index + 1}.jpg")),
-                          // Text(
-                          //   "Product Name",
-                          //   style: TextStyle(
-                          //     fontSize: 35.0,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
                         ],
                       ),
                     );
@@ -141,7 +133,9 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed("/add_product");
+          },
           backgroundColor: Colors.black,
           hoverColor: Colors.amber,
           child: Icon(
