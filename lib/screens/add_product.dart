@@ -13,13 +13,13 @@ class _AddproductState extends State<Addproduct> {
   MediaInfo? pickedImage;
   MediaInfo? imageFile;
 
-  String? imageUrl;
+  Uri? imageUrl;
 
   @override
   void initState() {
     super.initState();
     pickedImage = null;
-    imageUrl = '';
+    imageUrl = null;
   }
 
   pickImageFromGallery() async {
@@ -28,7 +28,10 @@ class _AddproductState extends State<Addproduct> {
       setState(() {
         pickedImage = imageFile;
       });
-      uploadImageToFirebase(imageFile);
+      final Uri imgUrl = await uploadImageToFirebase(imageFile);
+      setState(() {
+        imageUrl = imgUrl;
+      });
     }
   }
 
@@ -46,6 +49,7 @@ class _AddproductState extends State<Addproduct> {
             "images/images_${DateTime.now().microsecondsSinceEpoch}.${extension}");
     fb.UploadTask uploadTask = ref.put(info.data, metadata);
     fb.UploadTaskSnapshot taskSnapshot = await uploadTask.future;
+    // final Uri imgurl = await taskSnapshot.ref.getDownloadURL();
     return taskSnapshot.ref.getDownloadURL();
   }
 
