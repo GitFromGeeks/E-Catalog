@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecatalog/utils/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -82,54 +84,51 @@ class _DashboardState extends State<Dashboard> {
               ),
               onChanged: (string) {},
             ),
-            Expanded(
-              child: Container(
-                child: ListView.builder(
-                  itemCount: 6,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                      child: Column(
-                        children: [
-                          Image(
-                              height: MediaQuery.of(context).size.height * 0.3,
-                              width: MediaQuery.of(context).size.width,
-                              image: AssetImage("h${index + 1}.jpg")),
-                          ListTile(
-                            title: Text(
-                              "Product Name",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            trailing: FittedBox(
-                              fit: BoxFit.fill,
-                              child: Row(
-                                children: [
-                                  IconButton(
-                                      color: Colors.black,
-                                      icon: Icon(Icons.edit),
-                                      onPressed: () {}),
-                                  IconButton(
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: Colors.redAccent,
-                                      ),
-                                      onPressed: () {}),
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
+            StreamBuilder<QuerySnapshot>(
+              stream: Database.readItem(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong');
+                } else if (snapshot.hasData || snapshot.data != null) {
+                  return ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        SizedBox(height: 16.0),
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (context, index) {
+                      // var noteInfo = snapshot.data!.docs[index].data()!;
+                      String name =
+                          snapshot.data!.docs[index]['name'].toString();
+                      String category =
+                          snapshot.data!.docs[index]['category'].toString();
+
+                      return Ink(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: ListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          title: Text(
+                            name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          subtitle: Text(
+                            category,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+                return Center(
+                  child: Text("Empty"),
+                );
+              },
+            )
           ],
         ),
         floatingActionButton: FloatingActionButton(
