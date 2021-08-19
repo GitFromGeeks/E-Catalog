@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = _firestore.collection("catelog");
+final CollectionReference _mainCollection = _firestore.collection("catalog");
 
 class Database {
 //Add Product
@@ -11,8 +11,7 @@ class Database {
     required String name,
     required String category,
   }) async {
-    DocumentReference documentReference =
-        _mainCollection.doc("mtEnterprises").collection("catalog").doc();
+    DocumentReference documentReference = _mainCollection.doc();
 
     Map<String, dynamic> data = <String, dynamic>{
       'image': image,
@@ -28,8 +27,6 @@ class Database {
 
 // Read Product
   static Stream<QuerySnapshot> readItem() {
-    CollectionReference notesItemCollection =
-        _mainCollection.doc("mtEnterprises").collection("catelog");
-    return notesItemCollection.snapshots();
+    return FirebaseFirestore.instance.collection("catalog").snapshots();
   }
 }
