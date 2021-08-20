@@ -336,24 +336,6 @@ class _HomePageState extends State<HomePage> {
                       Text("Category Name")
                     ],
                   ),
-                  Column(
-                    children: [
-                      Image(
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        image: AssetImage("h4.jpg"),
-                      ),
-                      Text("Category Name")
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Image(
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        image: AssetImage("h5.jpg"),
-                      ),
-                      Text("Category Name")
-                    ],
-                  ),
                 ],
               ),
               Padding(padding: EdgeInsets.only(top: 20.0)),

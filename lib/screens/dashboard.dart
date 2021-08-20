@@ -10,6 +10,13 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  String? FltCategory;
+  @override
+  void initState() {
+    super.initState();
+    FltCategory = "Stools";
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -53,82 +60,169 @@ class _DashboardState extends State<Dashboard> {
                       color: Colors.black,
                     ),
                   ),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/home");
+                      },
+                      icon: Icon(Icons.logout_rounded))
                 ],
               ),
             )
           ],
         ),
-        body: StreamBuilder<QuerySnapshot>(
-          stream: Database.readItem(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text("Something went wrong");
-            } else if (snapshot.hasData || snapshot.data != null) {
-              return ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(height: 8.0),
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  String docID = snapshot.data!.docs[index].id.toString();
-                  String name = snapshot.data!.docs[index]['name'];
-                  String category = snapshot.data!.docs[index]['category'];
-                  String dbimage = snapshot.data!.docs[index]['image'];
-                  return Ink(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      title: Column(
-                        children: [
-                          Text(
-                            name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(20.0),
-                            child: Image(
-                              width: 70.0,
-                              height: 70.0,
-                              fit: BoxFit.contain,
-                              image: NetworkImage(
-                                dbimage,
+        body: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: FltCategory == "Tables"
+                              ? Colors.grey
+                              : Colors.white,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50.0, vertical: 20.0)),
+                      onPressed: () {
+                        setState(() {
+                          FltCategory = "Tables";
+                        });
+                      },
+                      child: Text(
+                        "Tables",
+                        style: TextStyle(
+                            color: Colors.orangeAccent,
+                            fontWeight: FontWeight.bold),
+                      )),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          // fixedSize: Size(35, 20),
+                          primary: FltCategory == "Stools"
+                              ? Colors.grey
+                              : Colors.white,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50.0, vertical: 20.0)),
+                      onPressed: () {
+                        setState(() {
+                          FltCategory = "Stools";
+                        });
+                      },
+                      child: Text(
+                        "Stools",
+                        style: TextStyle(
+                            color: Colors.orangeAccent,
+                            fontWeight: FontWeight.bold),
+                      )),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          // fixedSize: Size(35, 20),
+                          primary: FltCategory == "Tables"
+                              ? Colors.grey
+                              : Colors.white,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50.0, vertical: 20.0)),
+                      onPressed: () {
+                        setState(() {
+                          FltCategory = "Tables";
+                        });
+                      },
+                      child: Text(
+                        "Tables",
+                        style: TextStyle(
+                            color: Colors.orangeAccent,
+                            fontWeight: FontWeight.bold),
+                      )),
+                ],
+              ),
+            ),
+            Flexible(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: Database.readItem(FltCategory ?? "Stools"),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text("Something went wrong");
+                  } else if (snapshot.hasData || snapshot.data != null) {
+                    return ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 8.0),
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        String docID = snapshot.data!.docs[index].id.toString();
+                        String name = snapshot.data!.docs[index]['name'];
+                        String category =
+                            snapshot.data!.docs[index]['category'];
+                        String dbimage = snapshot.data!.docs[index]['image'];
+                        return Card(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        Database.deleteItem(docId: docID);
+                                      },
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ))
+                                ],
                               ),
-                            ),
-                          )
-                        ],
-                      ),
-                      subtitle: Text(
-                        category,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  );
+                              Image(
+                                  // fit: BoxFit.fill,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.3,
+                                  width: MediaQuery.of(context).size.width,
+                                  image: NetworkImage("$dbimage")),
+                              ListTile(
+                                tileColor: Colors.blueGrey,
+                                title: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    child: Text(
+                                      name,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                // trailing: ,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }
+                  return Text("Loading");
                 },
-              );
-            }
-            return Text("Loading");
-          },
+              ),
+            ),
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed("/add_product");
-          },
-          backgroundColor: Colors.black,
-          hoverColor: Colors.amber,
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-        ),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/add_product");
+            },
+            label: Row(
+              children: [
+                Text("Add"),
+                Icon(Icons.add),
+              ],
+            )),
       ),
     );
   }
 }
-
 
             // StreamBuilder(
             //   stream: Database.readItem(),

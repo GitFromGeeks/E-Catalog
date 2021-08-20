@@ -26,7 +26,21 @@ class Database {
   }
 
 // Read Product
-  static Stream<QuerySnapshot> readItem() {
-    return FirebaseFirestore.instance.collection("catalog").snapshots();
+  static Stream<QuerySnapshot> readItem(String FilteredCategory) {
+    return FirebaseFirestore.instance
+        .collection("catalog")
+        .where("category", isEqualTo: FilteredCategory)
+        .snapshots();
+  }
+
+  static Future<void> deleteItem({
+    required String docId,
+  }) async {
+    DocumentReference documentReferencer =
+        FirebaseFirestore.instance.collection("catalog").doc(docId);
+    await documentReferencer
+        .delete()
+        .whenComplete(() => print('Note item deleted from the database'))
+        .catchError((e) => print(e));
   }
 }
