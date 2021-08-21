@@ -23,6 +23,7 @@ class _DashboardState extends State<Dashboard> {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Image(
@@ -127,7 +128,7 @@ class _DashboardState extends State<Dashboard> {
                         });
                       },
                       child: Text(
-                        "Tables",
+                        "Pots",
                         style: TextStyle(
                             color: Colors.orangeAccent,
                             fontWeight: FontWeight.bold),

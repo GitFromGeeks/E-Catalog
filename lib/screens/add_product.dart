@@ -75,6 +75,7 @@ class _AddproductState extends State<Addproduct> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Image(
@@ -240,7 +241,7 @@ class _AddproductState extends State<Addproduct> {
       child: DropdownButton(
         hint: Text(
           "Select Category :- ${categoryController.text}",
-          style: TextStyle(fontSize: 30.0),
+          style: TextStyle(fontSize: 10.0),
         ),
         value: _choseCategory,
         icon: Icon(Icons.arrow_drop_down),

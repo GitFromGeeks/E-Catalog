@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -31,10 +32,9 @@ class _HomePageState extends State<HomePage> {
                 height: 60.0,
                 width: 60.0,
               ),
-              Text(
-                "MT Enterprises",
-                style: GoogleFonts.pacifico(),
-              )
+              Text("MT Enterprises",
+                  style:
+                      GoogleFonts.pacifico(color: Colors.black, fontSize: 15.0))
             ],
           ),
         ),
@@ -87,28 +87,32 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("mt1.png"), fit: BoxFit.fill)),
+                                image: AssetImage("mt1.png"),
+                                fit: BoxFit.fill)),
                       ),
                       Container(
                         // margin: EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("mt2.png"), fit: BoxFit.fill)),
+                                image: AssetImage("mt2.png"),
+                                fit: BoxFit.fill)),
                       ),
                       Container(
                         // margin: EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("mt3.png"), fit: BoxFit.fill)),
+                                image: AssetImage("mt3.png"),
+                                fit: BoxFit.fill)),
                       ),
                       Container(
                         // margin: EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("mt4.png"), fit: BoxFit.fill)),
+                                image: AssetImage("mt4.png"),
+                                fit: BoxFit.fill)),
                       ),
                     ],
                     options: CarouselOptions(
@@ -151,6 +155,11 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.of(context).pushNamed("/catalog");
                     }),
+              ),
+              Image(
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.height * 0.4,
+                image: AssetImage("mt.png"),
               ),
               Padding(padding: EdgeInsets.only(top: 30.0)),
               Align(

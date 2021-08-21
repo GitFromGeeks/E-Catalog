@@ -21,6 +21,7 @@ class _CatalogState extends State<Catalog> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Image(

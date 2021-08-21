@@ -5,7 +5,7 @@ import 'package:maps_launcher/maps_launcher.dart';
 
 Widget appfooter(context) {
   return (BottomAppBar(
-    color: Colors.blueAccent,
+    color: Colors.white,
     child: Container(
       child: Padding(
         padding: EdgeInsets.all(5.0),

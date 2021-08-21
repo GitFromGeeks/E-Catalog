@@ -8,6 +8,7 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
