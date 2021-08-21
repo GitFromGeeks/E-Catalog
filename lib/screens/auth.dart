@@ -1,5 +1,6 @@
 import 'package:ecatalog/screens/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AuthPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
@@ -60,8 +61,21 @@ class AuthPage extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: Column(
-            children: [_password(), _loginButton(context)],
+          child: Card(
+            child: Container(
+              color: Colors.white38,
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: Center(
+                child: Column(
+                  children: [
+                    Text("Admin Login", style: GoogleFonts.abel()),
+                    _password(),
+                    _loginButton(context)
+                  ],
+                ),
+              ),
+            ),
           ),
         ));
   }

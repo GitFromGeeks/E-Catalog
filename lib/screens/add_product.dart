@@ -13,8 +13,12 @@ class Addproduct extends StatefulWidget {
 }
 
 class _AddproductState extends State<Addproduct> {
+  int value = 1;
+  List<String> categories = ['Stools', 'Tables', 'Pots'];
   final TextEditingController nameController = new TextEditingController();
   final TextEditingController categoryController = new TextEditingController();
+
+  String? _choseCategory;
 
   MediaInfo? pickedImage;
   MediaInfo? imageFile;
@@ -70,79 +74,74 @@ class _AddproductState extends State<Addproduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Image(
-            image: AssetImage('mt.png'),
-            height: 60.0,
-            width: 60.0,
+        appBar: AppBar(
+          title: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Image(
+              image: AssetImage('mt.png'),
+              height: 60.0,
+              width: 60.0,
+            ),
           ),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                MediaQuery.of(context).size.width >= 500.0
-                    ? Row(
-                        children: [
-                          Icon(Icons.mail, size: 15.0, color: Colors.black),
-                          Padding(padding: EdgeInsets.only(left: 5.0)),
-                          Text(
-                            "info@mtenterprises.in",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 5.0)),
-                        ],
-                      )
-                    : Text(" "),
-                Icon(Icons.phone, size: 15.0, color: Colors.black),
-                Padding(padding: EdgeInsets.only(left: 5.0)),
-                Text(
-                  "+91 9897704730",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+          actions: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  MediaQuery.of(context).size.width >= 500.0
+                      ? Row(
+                          children: [
+                            Icon(Icons.mail, size: 15.0, color: Colors.black),
+                            Padding(padding: EdgeInsets.only(left: 5.0)),
+                            Text(
+                              "info@mtenterprises.in",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                            Padding(padding: EdgeInsets.only(left: 5.0)),
+                          ],
+                        )
+                      : Text(" "),
+                  Icon(Icons.phone, size: 15.0, color: Colors.black),
+                  Padding(padding: EdgeInsets.only(left: 5.0)),
+                  Text(
+                    "+91 9897704730",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            width: MediaQuery.of(context).size.width,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black54,
-                // color: Color(0xff2470c7),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: const Radius.circular(70),
-                  bottomRight: const Radius.circular(70),
-                ),
+                ],
               ),
-            ),
-          ),
-          SingleChildScrollView(
-            child: Form(
+            )
+          ],
+        ),
+        body: Center(
+          child: Card(
+            child: Container(
+              color: Colors.white38,
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(padding: EdgeInsets.only(top: 40.0)),
-                  _buildContainer(),
+                children: [
+                  _name(),
+                  _category(),
+                  Row(
+                    children: [
+                      _imagepicker(),
+                      pickedImage != null
+                          ? Icon(Icons.check_circle_outline,
+                              color: Colors.greenAccent)
+                          : Text("")
+                    ],
+                  ),
+                  _addButton(),
                 ],
               ),
             ),
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget _addButton() {
@@ -177,35 +176,32 @@ class _AddproductState extends State<Addproduct> {
       content: Text("opps. Something went wrong!",
           style: TextStyle(color: Colors.red)));
 
-  Widget _buildContainer() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.all(
-            Radius.circular(30),
-          ),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.5,
-            width: MediaQuery.of(context).size.width * 0.8,
-            decoration: BoxDecoration(
-              color: Colors.orangeAccent,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                _imagepicker(),
-                _name(),
-                _category(),
-                _addButton(),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget _buildContainer() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: <Widget>[
+  //       ClipRRect(
+  //         borderRadius: BorderRadius.all(
+  //           Radius.circular(30),
+  //         ),
+  //         child: Container(
+  //           height: MediaQuery.of(context).size.height * 0.5,
+  //           width: MediaQuery.of(context).size.width * 0.8,
+  //           child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             children: <Widget>[
+  //               _imagepicker(),
+  //               _name(),
+  //               _category(),
+  //               _addButton(),
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget _name() {
     return Padding(
@@ -223,18 +219,42 @@ class _AddproductState extends State<Addproduct> {
     );
   }
 
+  // Widget _category() {
+  //   return Padding(
+  //     padding: EdgeInsets.all(8),
+  //     child: TextFormField(
+  //       controller: categoryController,
+  //       keyboardType: TextInputType.name,
+  //       decoration: InputDecoration(
+  //           prefixIcon: Icon(
+  //             Icons.account_circle,
+  //             color: Color(0xff2470c7),
+  //           ),
+  //           labelText: "Category"),
+  //     ),
+  //   );
+  // }
+
   Widget _category() {
-    return Padding(
-      padding: EdgeInsets.all(8),
-      child: TextFormField(
-        controller: categoryController,
-        keyboardType: TextInputType.name,
-        decoration: InputDecoration(
-            prefixIcon: Icon(
-              Icons.account_circle,
-              color: Color(0xff2470c7),
-            ),
-            labelText: "Category"),
+    return Container(
+      child: DropdownButton(
+        hint: Text(
+          "Select Category :- ${categoryController.text}",
+          style: TextStyle(fontSize: 30.0),
+        ),
+        value: _choseCategory,
+        icon: Icon(Icons.arrow_drop_down),
+        iconSize: 42,
+        underline: SizedBox(),
+        // isExpanded: true,
+        onChanged: (newValue) {
+          setState(() {
+            categoryController.text = newValue.toString();
+          });
+        },
+        items: categories.map((e) {
+          return DropdownMenuItem(child: Text(e), value: e);
+        }).toList(),
       ),
     );
   }
@@ -256,3 +276,40 @@ class _AddproductState extends State<Addproduct> {
     );
   }
 }
+
+
+
+
+
+
+
+
+// Stack(
+//         children: <Widget>[
+//           Container(
+//             height: MediaQuery.of(context).size.height * 0.6,
+//             width: MediaQuery.of(context).size.width,
+//             child: Container(
+//               decoration: BoxDecoration(
+//                 color: Colors.black54,
+//                 // color: Color(0xff2470c7),
+//                 borderRadius: BorderRadius.only(
+//                   bottomLeft: const Radius.circular(70),
+//                   bottomRight: const Radius.circular(70),
+//                 ),
+//               ),
+//             ),
+//           ),
+//           SingleChildScrollView(
+//             child: Form(
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   Padding(padding: EdgeInsets.only(top: 40.0)),
+//                   _buildContainer(),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),

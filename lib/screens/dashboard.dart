@@ -116,14 +116,14 @@ class _DashboardState extends State<Dashboard> {
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           // fixedSize: Size(35, 20),
-                          primary: FltCategory == "Tables"
+                          primary: FltCategory == "Pots"
                               ? Colors.grey
                               : Colors.white,
                           padding: EdgeInsets.symmetric(
                               horizontal: 50.0, vertical: 20.0)),
                       onPressed: () {
                         setState(() {
-                          FltCategory = "Tables";
+                          FltCategory = "Pots";
                         });
                       },
                       child: Text(

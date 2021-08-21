@@ -24,10 +24,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Image(
-            image: AssetImage('mt.png'),
-            height: 60.0,
-            width: 60.0,
+          child: Row(
+            children: [
+              Image(
+                image: AssetImage('mt.png'),
+                height: 60.0,
+                width: 60.0,
+              ),
+              Text(
+                "MT Enterprises",
+                style: GoogleFonts.pacifico(),
+              )
+            ],
           ),
         ),
         actions: [
@@ -79,33 +87,33 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("c1.jpg"), fit: BoxFit.fill)),
+                                image: AssetImage("mt1.png"), fit: BoxFit.fill)),
                       ),
                       Container(
                         // margin: EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("c2.jpg"), fit: BoxFit.fill)),
+                                image: AssetImage("mt2.png"), fit: BoxFit.fill)),
                       ),
                       Container(
                         // margin: EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("c3.jpg"), fit: BoxFit.fill)),
+                                image: AssetImage("mt3.png"), fit: BoxFit.fill)),
                       ),
                       Container(
                         // margin: EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(0.0),
                             image: DecorationImage(
-                                image: AssetImage("c4.jpg"), fit: BoxFit.fill)),
+                                image: AssetImage("mt4.png"), fit: BoxFit.fill)),
                       ),
                     ],
                     options: CarouselOptions(
                       height: (MediaQuery.of(context).size.width >= 500.0)
-                          ? MediaQuery.of(context).size.height * 0.9
+                          ? MediaQuery.of(context).size.height
                           : MediaQuery.of(context).size.height * 0.4,
                       // height: MediaQuery.of(context).size.height * 0.9,
                       enlargeCenterPage: true,
@@ -309,32 +317,53 @@ class _HomePageState extends State<HomePage> {
                 spacing: 20.0,
                 runSpacing: 10.0,
                 children: [
-                  Column(
-                    children: [
-                      Image(
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        image: AssetImage("h1.jpg"),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/catalog");
+                    },
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Image(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            image: AssetImage("h1.jpg"),
+                          ),
+                          Text("Stools")
+                        ],
                       ),
-                      Text("Category Name")
-                    ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      Image(
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        image: AssetImage("h2.jpg"),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/catalog");
+                    },
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Image(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            image: AssetImage("h2.jpg"),
+                          ),
+                          Text("Tables")
+                        ],
                       ),
-                      Text("Category Name")
-                    ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      Image(
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        image: AssetImage("h3.jpg"),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/catalog");
+                    },
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Image(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            image: AssetImage("h3.jpg"),
+                          ),
+                          Text("Pots")
+                        ],
                       ),
-                      Text("Category Name")
-                    ],
+                    ),
                   ),
                 ],
               ),
