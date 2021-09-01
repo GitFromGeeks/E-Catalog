@@ -350,7 +350,7 @@ class _HomePageState extends State<HomePage> {
                             height: MediaQuery.of(context).size.height * 0.3,
                             image: AssetImage("h2.jpg"),
                           ),
-                          Text("Kitchenware")
+                          Text("Decorative")
                         ],
                       ),
                     ),
@@ -382,7 +382,7 @@ class _HomePageState extends State<HomePage> {
                             height: MediaQuery.of(context).size.height * 0.3,
                             image: AssetImage("h4.jpg"),
                           ),
-                          Text("Decorative")
+                          Text("Kitchenware")
                         ],
                       ),
                     ),

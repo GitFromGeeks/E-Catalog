@@ -3,6 +3,7 @@ import 'package:ecatalog/utils/database.dart';
 // import 'package:firebase/firestore.dart' as prefix;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Catalog extends StatefulWidget {
   @override
@@ -25,10 +26,17 @@ class _CatalogState extends State<Catalog> {
         backgroundColor: Colors.white,
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Image(
-            image: AssetImage('mt.png'),
-            height: 60.0,
-            width: 60.0,
+          child: Row(
+            children: [
+              Image(
+                image: AssetImage('mt.png'),
+                height: 60.0,
+                width: 60.0,
+              ),
+              Text("MT Enterprises",
+                  style: GoogleFonts.pacifico(
+                      color: Colors.black, fontSize: 15.0))
+            ],
           ),
         ),
         actions: [
@@ -157,7 +165,8 @@ class _CatalogState extends State<Catalog> {
                   return Text("Something went wrong");
                 } else if (snapshot.hasData || snapshot.data != null) {
                   return ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(height: 8.0),
+                    separatorBuilder: (context, index) =>
+                        SizedBox(height: 8.0),
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, index) {
                       // String docID = snapshot.data!.docs[index].id.toString();

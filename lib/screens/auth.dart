@@ -18,11 +18,9 @@ class AuthPage extends StatelessWidget {
                   height: 60.0,
                   width: 60.0,
                 ),
-                // Padding(padding: EdgeInsets.only(right: 5.0)),
-                // Text(
-                //   "MT Enterprises",
-                //   style: TextStyle(fontSize: 15.0),
-                // )
+                Text("MT Enterprises",
+                    style: GoogleFonts.pacifico(
+                        color: Colors.black, fontSize: 15.0))
               ],
             ),
           ),
