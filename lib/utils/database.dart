@@ -18,7 +18,6 @@ class Database {
       'name': name,
       'category': category,
     };
-
     await documentReference
         .set(data)
         .whenComplete(() => print("Product Added  ------------"))
@@ -26,6 +25,7 @@ class Database {
   }
 
 // Read Product
+  // ignore: non_constant_identifier_names
   static Stream<QuerySnapshot> readItem(String FilteredCategory) {
     return FirebaseFirestore.instance
         .collection("catalog")
@@ -33,6 +33,7 @@ class Database {
         .snapshots();
   }
 
+// Delete Product
   static Future<void> deleteItem({
     required String docId,
   }) async {

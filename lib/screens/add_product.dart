@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase/firebase.dart' as fb;
 import 'package:image_picker_web/image_picker_web.dart';
@@ -14,7 +14,12 @@ class Addproduct extends StatefulWidget {
 
 class _AddproductState extends State<Addproduct> {
   int value = 1;
-  List<String> categories = ['Stools', 'Tables', 'Pots'];
+  List<String> categories = [
+    'Houseware',
+    'Kitchenware',
+    'Decorative',
+    'Seasonal'
+  ];
   final TextEditingController nameController = new TextEditingController();
   final TextEditingController categoryController = new TextEditingController();
 
@@ -34,6 +39,7 @@ class _AddproductState extends State<Addproduct> {
 
   pickImageFromGallery() async {
     final imageFile = await ImagePickerWeb.getImageInfo;
+    // ignore: unnecessary_null_comparison
     if (imageFile != null) {
       setState(() {
         pickedImage = imageFile;
@@ -42,7 +48,7 @@ class _AddproductState extends State<Addproduct> {
   }
 
   _addProductToFirebase(MediaInfo info, String name, category) async {
-    final Uri imgUrl = await uploadImageToFirebase(info);
+    final Uri imgUrl = await uploadImageToStorage(info);
     _firestoredb(imgUrl.toString(), name, category);
     setState(() {
       imageUrl = imgUrl;
@@ -53,7 +59,7 @@ class _AddproductState extends State<Addproduct> {
     Database.addItem(image: img, name: name, category: category);
   }
 
-  static Future<Uri> uploadImageToFirebase(MediaInfo info) async {
+  static Future<Uri> uploadImageToStorage(MediaInfo info) async {
     String? mimeType = mime(path.basename(info.fileName ?? "null"));
     final extension = extensionFromMime(mimeType!);
     var metadata = fb.UploadMetadata(
@@ -177,33 +183,6 @@ class _AddproductState extends State<Addproduct> {
       content: Text("opps. Something went wrong!",
           style: TextStyle(color: Colors.red)));
 
-  // Widget _buildContainer() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     children: <Widget>[
-  //       ClipRRect(
-  //         borderRadius: BorderRadius.all(
-  //           Radius.circular(30),
-  //         ),
-  //         child: Container(
-  //           height: MediaQuery.of(context).size.height * 0.5,
-  //           width: MediaQuery.of(context).size.width * 0.8,
-  //           child: Column(
-  //             mainAxisAlignment: MainAxisAlignment.center,
-  //             crossAxisAlignment: CrossAxisAlignment.center,
-  //             children: <Widget>[
-  //               _imagepicker(),
-  //               _name(),
-  //               _category(),
-  //               _addButton(),
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   Widget _name() {
     return Padding(
       padding: EdgeInsets.all(8),
@@ -219,22 +198,6 @@ class _AddproductState extends State<Addproduct> {
       ),
     );
   }
-
-  // Widget _category() {
-  //   return Padding(
-  //     padding: EdgeInsets.all(8),
-  //     child: TextFormField(
-  //       controller: categoryController,
-  //       keyboardType: TextInputType.name,
-  //       decoration: InputDecoration(
-  //           prefixIcon: Icon(
-  //             Icons.account_circle,
-  //             color: Color(0xff2470c7),
-  //           ),
-  //           labelText: "Category"),
-  //     ),
-  //   );
-  // }
 
   Widget _category() {
     return Container(

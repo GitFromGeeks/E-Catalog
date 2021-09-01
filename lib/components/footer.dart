@@ -147,7 +147,7 @@ Widget appfooter(context) {
               ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
-                'Design by: Advance Tech Solution',
+                'Design by: Advance Tech Solutions',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,

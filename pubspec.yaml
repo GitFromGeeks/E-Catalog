@@ -64,6 +64,7 @@ flutter:
     - h1.jpg
     - h2.jpg
     - h3.jpg
+    - h4.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

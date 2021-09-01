@@ -132,14 +132,14 @@ class AuthPage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              // if (passwordController.text == "anas") {
-              //   Navigator.of(context).push(MaterialPageRoute(
-              //       builder: (BuildContext context) => Dashboard()));
-              // } else {
-              //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              // }
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => Dashboard()));
+              if (passwordController.text == "anas") {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => Dashboard()));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (BuildContext context) => Dashboard()));
             },
           ),
         )

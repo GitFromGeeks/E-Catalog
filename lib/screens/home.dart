@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   @override
+  // ignore: override_on_non_overriding_member
   bool e = false;
   void initState() {
     super.initState();
@@ -161,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                 height: MediaQuery.of(context).size.height * 0.4,
                 image: AssetImage("mt.png"),
               ),
-              Padding(padding: EdgeInsets.only(top: 30.0)),
+              Padding(padding: EdgeInsets.only(top: 10.0)),
               Align(
                 alignment: Alignment.center,
                 child: RichText(
@@ -174,10 +175,6 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.blue[900],
                               letterSpacing: 2.0,
                               wordSpacing: 4.0)) // style: TextStyle(
-                      //     color: Colors.blue,
-                      //     fontSize: 40.0,
-                      //     fontWeight: FontWeight.bold,
-                      //     fontFamily: "arial"),
                       ),
                 ),
               ),
@@ -337,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                             height: MediaQuery.of(context).size.height * 0.3,
                             image: AssetImage("h1.jpg"),
                           ),
-                          Text("Stools")
+                          Text("Houseware")
                         ],
                       ),
                     ),
@@ -353,7 +350,7 @@ class _HomePageState extends State<HomePage> {
                             height: MediaQuery.of(context).size.height * 0.3,
                             image: AssetImage("h2.jpg"),
                           ),
-                          Text("Tables")
+                          Text("Kitchenware")
                         ],
                       ),
                     ),
@@ -369,7 +366,23 @@ class _HomePageState extends State<HomePage> {
                             height: MediaQuery.of(context).size.height * 0.3,
                             image: AssetImage("h3.jpg"),
                           ),
-                          Text("Pots")
+                          Text("Seasonal")
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/catalog");
+                    },
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Image(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            image: AssetImage("h4.jpg"),
+                          ),
+                          Text("Decorative")
                         ],
                       ),
                     ),
@@ -385,52 +398,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-
-// Card(
-//                       child: Column(
-//                     children: [
-//                       Image(
-//                         height: MediaQuery.of(context).size.height * 0.3,
-//                         width: MediaQuery.of(context).size.width,
-//                         image: AssetImage('h1.jpg'),
-//                       ),
-//                       Text("product Name")
-//                     ],
-//                   )),
-//                   Card(
-//                       child: Column(
-//                     children: [
-//                       Image(
-//                         height: MediaQuery.of(context).size.height * 0.3,
-//                         width: MediaQuery.of(context).size.width,
-//                         image: AssetImage('h2.jpg'),
-//                       ),
-//                       Text("product Name")
-//                     ],
-//                   )),
-//                   Card(
-//                       child: Column(
-//                     children: [
-//                       Image(
-//                         height: MediaQuery.of(context).size.height * 0.3,
-//                         width: MediaQuery.of(context).size.width,
-//                         image: AssetImage('h3.jpg'),
-//                       ),
-//                       Text("product Name")
-//                     ],
-//                   )),
-//                   Card(
-//                       child: Column(
-//                     children: [
-//                       Image(
-//                         height: MediaQuery.of(context).size.height * 0.3,
-//                         width: MediaQuery.of(context).size.width,
-//                         image: AssetImage('h4.jpg'),
-//                       ),
-//                       Text("product Name")
-//                     ],
-//                   )),
-
-// "MT Enterprises is a widely known and reliable representative and distributor of various products in the Sensory Analysis Field such as Sensory Instruments (electronic nose, electronic tongue and electronic eye FIZZ Software for conducting automated Sensory and Consumer Tests, ARCS Software which provides complete Panel Managment Solutions and Olfactory Port for GC.We also have products for measurment of Nuisance(Odour Pollution and Air Pollution) in Indoor and Outdoor Environments. With offered gamut of products, we are providing one stop destination to meet each client's demand in the most effective manner MT Enterprises is head quartered in New Delhi, the capital of India and has associates at different cities to cover the entire India. Mr. Sachin Tanwar, our great mentor, has been driving the organization with his business acumen and skills. He favors sustainable relationship and ethical business policies to provide rewarding experience to the clients. He has experience of more than 25 years in the field of Analytical Instrumentation and Sensory Analysis and has worked in world class companies like Shimadzu, Hitachi, Ametek, Alpha MOS etc.We count big organisations like CFTRI, CSIO, IIT Kharagpur, CDAC, RDSO, Dr. Reddy’s Lab,Glenmark, ITC, CEERI, AIIMS,IOCL,CPCB,TATA Global Beverages, Nestle, Marico,Givaudan and others as our customers.")),

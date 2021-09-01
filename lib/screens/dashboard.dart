@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecatalog/utils/database.dart';
-import 'package:firebase/firestore.dart' as prefix;
+// import 'package:firebase/firestore.dart' as prefix;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  // ignore: non_constant_identifier_names
   String? FltCategory;
   @override
   void initState() {
@@ -26,10 +28,17 @@ class _DashboardState extends State<Dashboard> {
           backgroundColor: Colors.white,
           title: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Image(
-              image: AssetImage('mt.png'),
-              height: 60.0,
-              width: 60.0,
+            child: Row(
+              children: [
+                Image(
+                  image: AssetImage('mt.png'),
+                  height: 60.0,
+                  width: 60.0,
+                ),
+                Text("MT Enterprises",
+                    style: GoogleFonts.pacifico(
+                        color: Colors.black, fontSize: 15.0))
+              ],
             ),
           ),
           actions: [
@@ -65,7 +74,7 @@ class _DashboardState extends State<Dashboard> {
                       onPressed: () {
                         Navigator.of(context).pushNamed("/home");
                       },
-                      icon: Icon(Icons.logout_rounded))
+                      icon: Icon(Icons.logout_rounded, color: Colors.black))
                 ],
               ),
             )
@@ -79,18 +88,18 @@ class _DashboardState extends State<Dashboard> {
                 children: [
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: FltCategory == "Tables"
+                          primary: FltCategory == "Houseware"
                               ? Colors.grey
                               : Colors.white,
                           padding: EdgeInsets.symmetric(
                               horizontal: 50.0, vertical: 20.0)),
                       onPressed: () {
                         setState(() {
-                          FltCategory = "Tables";
+                          FltCategory = "Houseware";
                         });
                       },
                       child: Text(
-                        "Tables",
+                        "Houseware",
                         style: TextStyle(
                             color: Colors.orangeAccent,
                             fontWeight: FontWeight.bold),
@@ -98,18 +107,18 @@ class _DashboardState extends State<Dashboard> {
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           // fixedSize: Size(35, 20),
-                          primary: FltCategory == "Stools"
+                          primary: FltCategory == "Kitchenware"
                               ? Colors.grey
                               : Colors.white,
                           padding: EdgeInsets.symmetric(
                               horizontal: 50.0, vertical: 20.0)),
                       onPressed: () {
                         setState(() {
-                          FltCategory = "Stools";
+                          FltCategory = "Kitchenware";
                         });
                       },
                       child: Text(
-                        "Stools",
+                        "Kitchenware",
                         style: TextStyle(
                             color: Colors.orangeAccent,
                             fontWeight: FontWeight.bold),
@@ -117,18 +126,37 @@ class _DashboardState extends State<Dashboard> {
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           // fixedSize: Size(35, 20),
-                          primary: FltCategory == "Pots"
+                          primary: FltCategory == "Decorative"
                               ? Colors.grey
                               : Colors.white,
                           padding: EdgeInsets.symmetric(
                               horizontal: 50.0, vertical: 20.0)),
                       onPressed: () {
                         setState(() {
-                          FltCategory = "Pots";
+                          FltCategory = "Decorative";
                         });
                       },
                       child: Text(
-                        "Pots",
+                        "Decorative",
+                        style: TextStyle(
+                            color: Colors.orangeAccent,
+                            fontWeight: FontWeight.bold),
+                      )),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          // fixedSize: Size(35, 20),
+                          primary: FltCategory == "Seasonal"
+                              ? Colors.grey
+                              : Colors.white,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50.0, vertical: 20.0)),
+                      onPressed: () {
+                        setState(() {
+                          FltCategory = "Seasonal";
+                        });
+                      },
+                      child: Text(
+                        "Seasonal",
                         style: TextStyle(
                             color: Colors.orangeAccent,
                             fontWeight: FontWeight.bold),
@@ -138,7 +166,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Flexible(
               child: StreamBuilder<QuerySnapshot>(
-                stream: Database.readItem(FltCategory ?? "Stools"),
+                stream: Database.readItem(FltCategory ?? "Houseware"),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text("Something went wrong");
@@ -150,8 +178,8 @@ class _DashboardState extends State<Dashboard> {
                       itemBuilder: (context, index) {
                         String docID = snapshot.data!.docs[index].id.toString();
                         String name = snapshot.data!.docs[index]['name'];
-                        String category =
-                            snapshot.data!.docs[index]['category'];
+                        // String category =
+                        //     snapshot.data!.docs[index]['category'];
                         String dbimage = snapshot.data!.docs[index]['image'];
                         return Card(
                           color: Colors.white,
@@ -196,7 +224,6 @@ class _DashboardState extends State<Dashboard> {
                                     ),
                                   ),
                                 ),
-                                // trailing: ,
                               ),
                             ],
                           ),
@@ -224,64 +251,3 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 }
-
-            // StreamBuilder(
-            //   stream: Database.readItem(),
-            //   builder: (context, snapshot) {
-            //     if (snapshot.hasError) {
-            //       return Text("Something went wrong");
-            //     } else if (snapshot.hasData || snapshot.data != null) {
-            //       return ListView.separated(
-            //         separatorBuilder: (context, index) => SizedBox(height: 8.0),
-            //         itemCount: snapshot.data!.docs.length,
-            //         itemBuilder: (context, index) {
-            //           String name =
-            //               snapshot.data!.docs[index]['name'].toString();
-            //           String category =
-            //               snapshot.data!.docs[index]['catelog'].toString();
-            //           return Ink(
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(8.0),
-            //             ),
-            //             child: ListTile(
-            //                 shape: RoundedRectangleBorder(
-            //                   borderRadius: BorderRadius.circular(8.0),
-            //                 ),
-            //                 title: Text(
-            //                   name,
-            //                   maxLines: 1,
-            //                   overflow: TextOverflow.ellipsis,
-            //                 ),
-            //                 subtitle: Text(
-            //                   category,
-            //                   maxLines: 1,
-            //                   overflow: TextOverflow.ellipsis,
-            //                 )),
-            //           );
-            //         },
-            //       );
-            //     }
-            //   },
-            // )
-
-
-            // FutureBuilder<QuerySnapshot>(
-            //   future: FirebaseFirestore.instance.collection("catalog").get(),
-            //   builder: (context, snapshot) {
-            //     if (snapshot.hasData) {
-            //       final List documents = snapshot.data!.docs;
-            //       return ListView(
-            //           children: documents
-            //               .map((doc) => Card(
-            //                     child: ListTile(
-            //                       title: Text(doc['name']),
-            //                       subtitle: Text(doc['category']),
-            //                     ),
-            //                   ))
-            //               .toList());
-            //     } else if (snapshot.hasError) {
-            //       return Text(" Something went wrong");
-            //     }
-            //     return Text("Null return");
-            //   },
-            // )

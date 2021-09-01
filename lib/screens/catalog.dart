@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecatalog/utils/database.dart';
-import 'package:firebase/firestore.dart' as prefix;
+// import 'package:firebase/firestore.dart' as prefix;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,11 +10,12 @@ class Catalog extends StatefulWidget {
 }
 
 class _CatalogState extends State<Catalog> {
+  // ignore: non_constant_identifier_names
   String? FltCategory;
   @override
   void initState() {
     super.initState();
-    FltCategory = "Stools";
+    FltCategory = "Houseware";
   }
 
   @override
@@ -72,18 +73,18 @@ class _CatalogState extends State<Catalog> {
               children: [
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: FltCategory == "Tables"
+                        primary: FltCategory == "Houseware"
                             ? Colors.grey
                             : Colors.white,
                         padding: EdgeInsets.symmetric(
                             horizontal: 50.0, vertical: 20.0)),
                     onPressed: () {
                       setState(() {
-                        FltCategory = "Tables";
+                        FltCategory = "Houseware";
                       });
                     },
                     child: Text(
-                      "Tables",
+                      "Houseware",
                       style: TextStyle(
                           color: Colors.orangeAccent,
                           fontWeight: FontWeight.bold),
@@ -91,18 +92,18 @@ class _CatalogState extends State<Catalog> {
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         // fixedSize: Size(35, 20),
-                        primary: FltCategory == "Stools"
+                        primary: FltCategory == "Kitchenware"
                             ? Colors.grey
                             : Colors.white,
                         padding: EdgeInsets.symmetric(
                             horizontal: 50.0, vertical: 20.0)),
                     onPressed: () {
                       setState(() {
-                        FltCategory = "Stools";
+                        FltCategory = "Kitchenware";
                       });
                     },
                     child: Text(
-                      "Stools",
+                      "Kitchenware",
                       style: TextStyle(
                           color: Colors.orangeAccent,
                           fontWeight: FontWeight.bold),
@@ -110,17 +111,37 @@ class _CatalogState extends State<Catalog> {
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         // fixedSize: Size(35, 20),
-                        primary:
-                            FltCategory == "Pots" ? Colors.grey : Colors.white,
+                        primary: FltCategory == "Decorative"
+                            ? Colors.grey
+                            : Colors.white,
                         padding: EdgeInsets.symmetric(
                             horizontal: 50.0, vertical: 20.0)),
                     onPressed: () {
                       setState(() {
-                        FltCategory = "Pots";
+                        FltCategory = "Decorative";
                       });
                     },
                     child: Text(
-                      "Pots",
+                      "Decorative",
+                      style: TextStyle(
+                          color: Colors.orangeAccent,
+                          fontWeight: FontWeight.bold),
+                    )),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        // fixedSize: Size(35, 20),
+                        primary: FltCategory == "Seasonal"
+                            ? Colors.grey
+                            : Colors.white,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 50.0, vertical: 20.0)),
+                    onPressed: () {
+                      setState(() {
+                        FltCategory = "Seasonal";
+                      });
+                    },
+                    child: Text(
+                      "Seasonal",
                       style: TextStyle(
                           color: Colors.orangeAccent,
                           fontWeight: FontWeight.bold),
@@ -130,7 +151,7 @@ class _CatalogState extends State<Catalog> {
           ),
           Flexible(
             child: StreamBuilder<QuerySnapshot>(
-              stream: Database.readItem(FltCategory ?? "Stools"),
+              stream: Database.readItem(FltCategory ?? "Houseware"),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Text("Something went wrong");
@@ -141,7 +162,7 @@ class _CatalogState extends State<Catalog> {
                     itemBuilder: (context, index) {
                       // String docID = snapshot.data!.docs[index].id.toString();
                       String name = snapshot.data!.docs[index]['name'];
-                      String category = snapshot.data!.docs[index]['category'];
+                      // String category = snapshot.data!.docs[index]['category'];
                       String dbimage = snapshot.data!.docs[index]['image'];
                       return Card(
                         color: Colors.white,
@@ -170,17 +191,7 @@ class _CatalogState extends State<Catalog> {
                                   ),
                                 ),
                               ),
-                              // trailing: ,
                             ),
-
-                            // Image(image: AssetImage("h${index + 1}.jpg")),
-                            // Text(
-                            //   "Product Name",
-                            //   style: TextStyle(
-                            //     fontSize: 35.0,
-                            //     fontWeight: FontWeight.bold,
-                            //   ),
-                            // ),
                           ],
                         ),
                       );
@@ -196,53 +207,3 @@ class _CatalogState extends State<Catalog> {
     );
   }
 }
-
-
-
-
-
-
-          // Expanded(
-          //   child: Container(
-          //     child: ListView.builder(
-          //       itemCount: 6,
-          //       itemBuilder: (BuildContext context, int index) {
-          //         return Card(
-          //           color: Colors.white,
-          //           shape: RoundedRectangleBorder(
-          //               borderRadius: BorderRadius.circular(10.0)),
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.stretch,
-          //             children: [
-          //               Image(
-          //                   // fit: BoxFit.fill,
-          //                   height: MediaQuery.of(context).size.height * 0.3,
-          //                   width: MediaQuery.of(context).size.width,
-          //                   image: AssetImage("h${index + 1}.jpg")),
-          //               ListTile(
-          //                 tileColor: Colors.blueGrey,
-          //                 title: Text(
-          //                   "    Product Name",
-          //                   style: TextStyle(
-          //                       color: Colors.white,
-          //                       fontSize: 25.0,
-          //                       fontWeight: FontWeight.bold),
-          //                 ),
-          //                 // trailing: ,
-          //               ),
-
-          //               // Image(image: AssetImage("h${index + 1}.jpg")),
-          //               // Text(
-          //               //   "Product Name",
-          //               //   style: TextStyle(
-          //               //     fontSize: 35.0,
-          //               //     fontWeight: FontWeight.bold,
-          //               //   ),
-          //               // ),
-          //             ],
-          //           ),
-          //         );
-          //       },
-          //     ),
-          //   ),
-          // ),
