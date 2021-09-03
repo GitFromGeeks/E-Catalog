@@ -34,8 +34,8 @@ class _CatalogState extends State<Catalog> {
                 width: 60.0,
               ),
               Text("MT Enterprises",
-                  style: GoogleFonts.pacifico(
-                      color: Colors.black, fontSize: 15.0))
+                  style:
+                      GoogleFonts.pacifico(color: Colors.black, fontSize: 15.0))
             ],
           ),
         ),
@@ -62,7 +62,7 @@ class _CatalogState extends State<Catalog> {
                 Icon(Icons.phone, size: 15.0, color: Colors.black),
                 Padding(padding: EdgeInsets.only(left: 5.0)),
                 Text(
-                  "+91 9897704730",
+                  "+91 8433176627",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -165,8 +165,7 @@ class _CatalogState extends State<Catalog> {
                   return Text("Something went wrong");
                 } else if (snapshot.hasData || snapshot.data != null) {
                   return ListView.separated(
-                    separatorBuilder: (context, index) =>
-                        SizedBox(height: 8.0),
+                    separatorBuilder: (context, index) => SizedBox(height: 8.0),
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, index) {
                       // String docID = snapshot.data!.docs[index].id.toString();

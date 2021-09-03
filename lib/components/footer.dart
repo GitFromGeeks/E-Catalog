@@ -91,7 +91,7 @@ Widget appfooter(context) {
                     color: Colors.black,
                   ),
                   Text(
-                    '+91 9897704730, 9897704730',
+                    '+91 8433176627, 9897704730',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0,
@@ -109,21 +109,16 @@ Widget appfooter(context) {
                     size: 15.0,
                   ),
                   Padding(padding: EdgeInsets.only(left: 1.0)),
-                  Text("anas@mtenterprises.in, farhan@mtenterprises.in",
+                  Text("info@mtenterprises.in, farhan@mtenterprises.in",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Text(
-                "info@mtenterprises.in",
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
               Padding(padding: EdgeInsets.only(top: 10.0)),
               Text(
-                '           285,352 Dhoom Gher Village, Chandusi Road',
+                '           285,352 DHOM GHER VILLAGE,CHANDUSI ROAD',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,

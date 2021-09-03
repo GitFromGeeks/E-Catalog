@@ -48,7 +48,7 @@ class AuthPage extends StatelessWidget {
                   Icon(Icons.phone, size: 15.0, color: Colors.black),
                   Padding(padding: EdgeInsets.only(left: 5.0)),
                   Text(
-                    "+91 9897704730",
+                    "+91 8433176627",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
